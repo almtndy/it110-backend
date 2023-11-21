@@ -22,7 +22,7 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
- 
+
         $response = [
             'user'  => $user,
             'token' => $user->createToken($request->email)->plainTextToken
@@ -31,8 +31,13 @@ class AuthController extends Controller
     }
 
     // Logout using specified resources
-    public function logout()
+    public function logout(Request $request)
     {
-        return false;
+        $request->user()->tokens()->delete();
+
+        $response = [
+            'message' => 'Logout.'
+        ];
+        return $response;
     }
 }
