@@ -85,7 +85,7 @@ class UserController extends Controller
         return $user;
     }
     /**
-     * Update image to the specified resource from storage.
+     * Update the image for the specified resource from storage.
      */
     public function image(UserRequest $request, string $id)
     {
